@@ -43,8 +43,8 @@ The dataset is filtered to include only samples with the label 895. This subset 
 - Incorrect Predictions/ Distinct Values: Rows where the true label differs from the predicted label are filtered to analyze incorrect predictions. Among 50 images, in 12 images the warplane class objects are incorrectly classified.
 
 ##	Data Visualization: 
-•	38 images in which the warplane class objects are correctly classified.
-•	12 images in which the warplane class objects have been incorrectly classified.
+- 38 images in which the warplane class objects are correctly classified.
+- 12 images in which the warplane class objects have been incorrectly classified.
 The visualization alone doesn’t reveal the specific features the model relies on. To gain insights into how the model identifies a warplane and which features it considers important, we will use LIME for explanation.
 
 ###  Lime Explanation Visualization: 
@@ -57,7 +57,10 @@ Lime explanation visualizations help to understand which parts of the image infl
 -	2nd Visualization: This visualization shows only the features with positive contributions towards the predicted class, without hiding the rest of the image.
 -	3rd Visualization: This variant highlights the positive features while hiding the rest of the image, focusing on the most influential regions.
 -	4rth Visualization: This heatmap shows the weight of each segment (superpixel) in influencing the model's prediction. The colors represent the contribution of each segment, following this sequence: dark blue, blue, light blue, white, light orange, orange, dark orange, light red, red, dark red.
-  	- Dark blue indicates the most influential parts contributing positively. - White represents a neutral or average influence. - Orange shades indicate moderate negative influences. - Dark red shows the most negative contribution.
+  	- Dark blue indicates the most influential parts contributing positively.
+   - White represents a neutral or average influence.
+   - Orange shades indicate moderate negative influences.
+   - Dark red shows the most negative contribution.
      This sequence visually communicates how each part of the image impacts the model’s decision, from highly positive (dark blue) to highly negative (dark red).
 The visualization shows that the model reliably identifies a warplane when it detects key features like the front, tail, or wheels of the warplane. However, if any of these features are missing from the image, the model struggles to recognize the object as a warplane.
 
