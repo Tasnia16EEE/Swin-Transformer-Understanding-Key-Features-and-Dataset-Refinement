@@ -20,10 +20,10 @@ While most images are in RGB format, some are in grayscale. To simplify and unif
 
 ##	Data Preparation: 
 The prepare_data function is designed to preprocess images for Swin Transformer models by extracting and preparing data for inference. Here's a brief overview of the process:
-•	Image and Label Extraction: The function iterates through the input data, extracting images and true labels, and mapping labels to their human-readable names using model.config.id2label.
-•	Image Preprocessing: Each image is processed using the processor function, which handles resizing, normalization, and conversion to PyTorch tensors (return_tensors='pt'), ensuring compatibility with the Swin Transformer model.
-•	Device Transfer: The processed tensors are moved to the specified device (CPU or GPU) using .to(device), optimizing them for inference.
-•	Collecting Prepared Inputs: Processed inputs are stored in a list for efficient batch processing during inference.
+- Image and Label Extraction: The function iterates through the input data, extracting images and true labels, and mapping labels to their human-readable names using model.config.id2label.
+-	Image Preprocessing: Each image is processed using the processor function, which handles resizing, normalization, and conversion to PyTorch tensors (return_tensors='pt'), ensuring compatibility with the Swin Transformer model.
+-	Device Transfer: The processed tensors are moved to the specified device (CPU or GPU) using .to(device), optimizing them for inference.
+-	Collecting Prepared Inputs: Processed inputs are stored in a list for efficient batch processing during inference.
 The function returns indices, images, true labels, label names, and processed inputs, ready for inference by the Swin Transformer.
 
 ##	Analyzing Data:
@@ -49,19 +49,15 @@ The visualization alone doesn’t reveal the specific features the model relies 
 
 ###  Lime Explanation Visualization: 
 LIME (Local Interpretable Model-agnostic Explanations) is a technique that helps interpret machine learning models by approximating their behavior locally around a given prediction. It creates an interpretable model that explains how the original model's prediction is influenced by different features, making it easier to understand what the model focuses on for specific instances.
-•	Unique Data Lime Explanation
-•	Distinct Data Lime Explanation
+- Unique Data Lime Explanation
+- Distinct Data Lime Explanation
 
 Lime explanation visualizations help to understand which parts of the image influence the model's decision, providing insights into the model's behavior for each input image.
 -	1st Visualization: This section visualizes the LIME explanation with both positive and negative contributions of features shown. The image boundaries are highlighted based on the LIME mask.
 -	2nd Visualization: This visualization shows only the features with positive contributions towards the predicted class, without hiding the rest of the image.
 -	3rd Visualization: This variant highlights the positive features while hiding the rest of the image, focusing on the most influential regions.
 -	4rth Visualization: This heatmap shows the weight of each segment (superpixel) in influencing the model's prediction. The colors represent the contribution of each segment, following this sequence: dark blue, blue, light blue, white, light orange, orange, dark orange, light red, red, dark red.
-  	- Dark blue indicates the most influential parts contributing positively.
-   - White represents a neutral or average influence.
-   - Orange shades indicate moderate negative influences.
-   - Dark red shows the most negative contribution.
-     This sequence visually communicates how each part of the image impacts the model’s decision, from highly positive (dark blue) to highly negative (dark red).
+  	- Dark blue indicates the most influential parts contributing positively, white represents a neutral or average influence, orange shades indicate moderate negative influences, dark red shows the most negative contribution. This sequence visually communicates how each part of the image impacts the model’s decision, from highly positive (dark blue) to highly negative (dark red).
 The visualization shows that the model reliably identifies a warplane when it detects key features like the front, tail, or wheels of the warplane. However, if any of these features are missing from the image, the model struggles to recognize the object as a warplane.
 
 ## Recommendation: 
