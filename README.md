@@ -10,7 +10,7 @@ Enhancing Object Classification in the Swin Transformer: Understanding Key Featu
 The dataset used for this analysis is the ImageNet-1K dataset, available on Hugging Face. ImageNet-1K dataset comprises over 1.2 million high-resolution images across 1,000 diverse classes, including objects, animals, and scenes, and is a benchmark for image classification tasks. Originally developed for the ImageNet Large Scale Visual Recognition Challenge (ILSVRC), it is renowned for its quality, featuring human-verified labels that provide reliable ground truth data. Its diversity makes it ideal for training and evaluating deep learning models like the Swin Transformer. However, the dataset has limitations, including a need for more images to capture a broader range of variations and recent developments. Despite this, its accessibility allows for seamless integration into machine-learning workflows.
 
 ##	Import Model and Image Processor:
- 	For this data analysis, swinv2 transformer is used. The model is imported from Hugging Face using the identifier “microsoft/swinv2-tiny-patch4-window8-256”.
+For this data analysis, swinv2 transformer is used. The model is imported from Hugging Face using the identifier “microsoft/swinv2-tiny-patch4-window8-256”.
 
 ##	Data Manipulation:
 The data instances include the following fields:
@@ -39,8 +39,8 @@ The model correctly classifies 81.1% of objects, meaning about 19% of images are
 The dataset is filtered to include only samples with the label 895. This subset is then structured into a DataFrame using pandas. The DataFrame, warplane_dataframe, includes columns for dataset index, images, true labels, true label names, predicted labels, and predicted label names. This organization allows for detailed analysis of predictions and true labels specifically for the Warplane class.
 
 ###	Data Analysis: 
-Correct Predictions/ Unique Values: Rows in the warplane_dataframe where the true label matches the predicted label are filtered to identify correct predictions. Among 50 images, in 38 images the warplane class objects are correctly classified.
-Incorrect Predictions/ Distinct Values: Rows where the true label differs from the predicted label are filtered to analyze incorrect predictions. Among 50 images, in 12 images the warplane class objects are incorrectly classified.
+- Correct Predictions/ Unique Values: Rows in the warplane_dataframe where the true label matches the predicted label are filtered to identify correct predictions. Among 50 images, in 38 images the warplane class objects are correctly classified.
+- Incorrect Predictions/ Distinct Values: Rows where the true label differs from the predicted label are filtered to analyze incorrect predictions. Among 50 images, in 12 images the warplane class objects are incorrectly classified.
 
 ##	Data Visualization: 
 •	38 images in which the warplane class objects are correctly classified.
@@ -57,10 +57,7 @@ Lime explanation visualizations help to understand which parts of the image infl
 -	2nd Visualization: This visualization shows only the features with positive contributions towards the predicted class, without hiding the rest of the image.
 -	3rd Visualization: This variant highlights the positive features while hiding the rest of the image, focusing on the most influential regions.
 -	4rth Visualization: This heatmap shows the weight of each segment (superpixel) in influencing the model's prediction. The colors represent the contribution of each segment, following this sequence: dark blue, blue, light blue, white, light orange, orange, dark orange, light red, red, dark red.
-  	- Dark blue indicates the most influential parts contributing positively.
-   - White represents a neutral or average influence.
-   - Orange shades indicate moderate negative influences.
-   - Dark red shows the most negative contribution.
+  	- Dark blue indicates the most influential parts contributing positively. - White represents a neutral or average influence. - Orange shades indicate moderate negative influences. - Dark red shows the most negative contribution.
      This sequence visually communicates how each part of the image impacts the model’s decision, from highly positive (dark blue) to highly negative (dark red).
 The visualization shows that the model reliably identifies a warplane when it detects key features like the front, tail, or wheels of the warplane. However, if any of these features are missing from the image, the model struggles to recognize the object as a warplane.
 
